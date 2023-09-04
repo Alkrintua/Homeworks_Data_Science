@@ -8,7 +8,7 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-# mycursor.execute("CREATE DATABASE my_first_db")
+mycursor.execute("CREATE DATABASE my_first_db")
 
 
 mydb = mysql.connector.connect(
@@ -19,21 +19,21 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-# mycursor.execute("CREATE TABLE student (id INT, "
-#                  "name VARCHAR(255))")
+mycursor.execute("CREATE TABLE student (id INT, "
+                 "name VARCHAR(255))")
 
-# mycursor.execute("CREATE TABLE employee (id INT AUTO_INCREMENT PRIMARY KEY, "
-#                  "name VARCHAR(255), salary INT(6))")
+mycursor.execute("CREATE TABLE employee (id INT AUTO_INCREMENT PRIMARY KEY, "
+                 "name VARCHAR(255), salary INT(6))")
 
-# mycursor.execute("ALTER TABLE student ADD PRIMARY KEY (id)")
+mycursor.execute("ALTER TABLE student ADD PRIMARY KEY (id)")
 
 
-# sql = "INSERT INTO student (id, name) VALUES (%s, %s)"
-# val = [("01", "John")]
-# mycursor.executemany(sql, val)
+sql = "INSERT INTO student (id, name) VALUES (%s, %s)"
+val = [("01", "John")]
+mycursor.executemany(sql, val)
 
-# mydb.commit()
-# print(mycursor.rowcount, "record inserted.")
+mydb.commit()
+print(mycursor.rowcount, "record inserted.")
 
 
 mycursor.execute("SELECT * FROM student")
@@ -42,10 +42,10 @@ for x in myresult:
     print(x)
 
 
-# sql = "INSERT INTO employee (id, name, salary) VALUES (%s, %s, %s)"
-# val = [("01", "John", "10000")]
-# mycursor.executemany(sql, val)
-# mydb.commit()
+sql = "INSERT INTO employee (id, name, salary) VALUES (%s, %s, %s)"
+val = [("01", "John", "10000")]
+mycursor.executemany(sql, val)
+mydb.commit()
 
 
 mycursor.execute("SELECT * FROM employee")
